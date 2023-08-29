@@ -9,17 +9,6 @@
 <button onclick="procesar()">Procesar</button>
 <p>Resultado<input id="res" size=50/></p>
 <script>
-function byId(sid){
-	return document.getElementById(sid).value;
-}
-function strarr2num(strarr,lim){
-	//leer datos de vo
-	arrs=strarr.split(lim);
-	arrn=[];
-	arrs.forEach((x)=>{arrn.push(Number(x))});
-	return arrn;
-
-}
 
 function procesar(){
 
@@ -29,16 +18,16 @@ v3 = document.getElementById('t1').value.split(',');
 v4 = document.getElementById('t2').value.split(',');
 
 
-document.getElementById('res').value= v4;
+document.getElementById('res').value= ("p1= "+transformacion(v4,transformacion(v3,v1))+" p2= "+transformacion(v4,transformacion(v3,v2)));
 
 }
 function transformacion(arreglo1,arreglo2){
-	if (arreglo1[0]==T){
+	if (arreglo1[0]=='T'){
 		return traslacion(arreglo1,arreglo2);
 	}
-	else if(arreglo1[0]==E){
+	else if(arreglo1[0]=='E'){
 	    return escalado(arreglo1,arreglo2);
-	}else if(arreglo1[0]==R){
+	}else if(arreglo1[0]=='R'){
 		return rotacion(arreglo1,arreglo2);
 	}
 }
@@ -46,12 +35,16 @@ function transformacion(arreglo1,arreglo2){
 function traslacion(arreglo1,arreglo2){
         for(i=0;i<3;i++){
 		arreglo2[i]+=Number(arreglo1[i]);
-		}    
+		}
+		
+		return arreglo2;	
 	}
 function escalado(arreglo1,arreglo2){
+        arreglo2r=[]
         for(i=0;i<3;i++){
-		arreglo2[i]*=Number(arreglo1[i]);
-		}    
+		arreglo2r[i]=arreglo2[i]*Number(arreglo1[i]);
+		}
+		return arreglo2r;
 	}
 </script>
 
