@@ -7,7 +7,7 @@
 <p>Transformacion final <input id="t2"></p>
 
 <button onclick="procesar()">Procesar</button>
-<p>Resultado<input id="res" size=50/></p>
+<p>Vector resultado(posterior a las transformaciones anteriores)<input id="res" size=50/></p>
 <script>
 
 function procesar(){
@@ -46,9 +46,11 @@ function escalado(arreglo1,arreglo2){
 		return arreglo2r;
 	}
 function rotacion(arreglo1,arreglo2){
-	
-	
-
+	arreglo2r=[]
+	for(i=0;i<3;i++){
+		arreglo2r[i]=(arreglo2*(Math.cos((arreglo1[i+1]*Math.PI/180))+Math.sin((arreglo1[i+1]*Math.PI/180))));
+	}
+	return arreglo2r;
 }
 </script>
 
