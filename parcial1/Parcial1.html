@@ -2,7 +2,7 @@
 <h1>Transformaciones conjuntas</h1>
 <p>Vector para la transformación</p>
 <p>P1 <input id="p1">, P2 <input id="p2"></p>
-<p>Transformaciones: (R/T/E x1,y1,z1)</p>
+<p>Transformaciones: (R/T/E,x1,y1,z1)</p>
 <p>Transformacion inicial <input id="t1"></p>
 <p>Transformacion final <input id="t2"></p>
 
@@ -14,11 +14,10 @@ function procesar(){
 
 v1 = document.getElementById('p1').value.split(',').map(parseFloat);
 v2 = document.getElementById('p2').value.split(',').map(parseFloat);
-v3 = document.getElementById('t1').value.split(',');
-v4 = document.getElementById('t2').value.split(',');
+v3 = document.getElementById('t1').value.split(','+'');
+v4 = document.getElementById('t2').value.split(','+'');
 
-
-document.getElementById('res').value= ("p1= "+transformacion(v4,transformacion(v3,v1))+" p2= "+transformacion(v4,transformacion(v3,v2)));
+document.getElementById('res').value= ("p1´= "+transformacion(v4,transformacion(v3,v1))+" p2´= "+transformacion(v4,transformacion(v3,v2)));
 
 }
 function transformacion(arreglo1,arreglo2){
@@ -34,7 +33,7 @@ function transformacion(arreglo1,arreglo2){
 
 function traslacion(arreglo1,arreglo2){
         for(i=0;i<3;i++){
-		arreglo2[i]+=Number(arreglo1[i]);
+		arreglo2[i]+=Number(arreglo1[i+1]);
 		}
 		
 		return arreglo2;	
@@ -42,10 +41,15 @@ function traslacion(arreglo1,arreglo2){
 function escalado(arreglo1,arreglo2){
         arreglo2r=[]
         for(i=0;i<3;i++){
-		arreglo2r[i]=arreglo2[i]*Number(arreglo1[i]);
+		arreglo2r[i]=arreglo2[i]*Number(arreglo1[i+1]);
 		}
 		return arreglo2r;
 	}
+function rotacion(arreglo1,arreglo2){
+	
+	
+
+}
 </script>
 
 </html>
