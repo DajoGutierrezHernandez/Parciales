@@ -1,7 +1,7 @@
 <html>
 <h1>Transformaciones conjuntas</h1>
 <p>Vector para la transformación</p>
-<p>P1 <input id="p1"></p> <p>P2 <input id="p2"></p>
+<p>P1 <input id="p1">, P2 <input id="p2"></p>
 <p>Transformaciones: (R/T/E x1,y1,z1)</p>
 <p>Transformacion inicial <input id="t1"></p>
 <p>Transformacion final <input id="t2"></p>
@@ -23,16 +23,36 @@ function strarr2num(strarr,lim){
 
 function procesar(){
 
-let v1 = document.getElementById('p1').value.split(',');
-let v2 = document.getElementById('p2').value.split(',');
-let v3 = document.getElementById('t1').value.split(',');
-let v4 = document.getElementById('t2').value.split(',');
+v1 = document.getElementById('p1').value.split(',').map(parseFloat);
+v2 = document.getElementById('p2').value.split(',').map(parseFloat);
+v3 = document.getElementById('t1').value.split(',');
+v4 = document.getElementById('t2').value.split(',');
+
 
 document.getElementById('res').value= v4;
 
 }
+function transformacion(arreglo1,arreglo2){
+	if (arreglo1[0]==T){
+		return traslacion(arreglo1,arreglo2);
+	}
+	else if(arreglo1[0]==E){
+	    return escalado(arreglo1,arreglo2);
+	}else if(arreglo1[0]==R){
+		return rotacion(arreglo1,arreglo2);
+	}
+}
 
-
+function traslacion(arreglo1,arreglo2){
+        for(i=0;i<3;i++){
+		arreglo2[i]+=Number(arreglo1[i]);
+		}    
+	}
+function escalado(arreglo1,arreglo2){
+        for(i=0;i<3;i++){
+		arreglo2[i]*=Number(arreglo1[i]);
+		}    
+	}
 </script>
 
 </html>
