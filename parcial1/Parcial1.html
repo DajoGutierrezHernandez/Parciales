@@ -1,0 +1,38 @@
+<html>
+<h1>Transformaciones conjuntas</h1>
+<p>Vector para la transformación</p>
+<p>P1 <input id="p1"></p> <p>P2 <input id="p2"></p>
+<p>Transformaciones: (R/T/E x1,y1,z1)</p>
+<p>Transformacion inicial <input id="t1"></p>
+<p>Transformacion final <input id="t2"></p>
+
+<button onclick="procesar()">Procesar</button>
+<p>Resultado<input id="res" size=50/></p>
+<script>
+function byId(sid){
+	return document.getElementById(sid).value;
+}
+function strarr2num(strarr,lim){
+	//leer datos de vo
+	arrs=strarr.split(lim);
+	arrn=[];
+	arrs.forEach((x)=>{arrn.push(Number(x))});
+	return arrn;
+
+}
+
+function procesar(){
+
+let v1 = document.getElementById('p1').value.split(',');
+let v2 = document.getElementById('p2').value.split(',');
+let v3 = document.getElementById('t1').value.split(',');
+let v4 = document.getElementById('t2').value.split(',');
+
+document.getElementById('res').value= v4;
+
+}
+
+
+</script>
+
+</html>
